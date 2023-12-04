@@ -1,38 +1,343 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add your navbar styles here */
+/* For example: */
+.name{
+    text-shadow: 16px 12px 4px #000000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .wrapper {
+    display: inline-flex;
+    list-style: none;
+    height: 120px;
+    width: 100%;
+    padding-top: 40px;
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
   }
+  
+  .wrapper .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 50%;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .wrapper .icon:hover span,
+  .wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wrapper .linkedin:hover,
+  .wrapper .linkedin:hover .tooltip,
+  .wrapper .linkedin:hover .tooltip::before {
+    background: #ffffff;
+    color: #1877F2;
+
+  }
+  
+  .wrapper .github:hover,
+  .wrapper .github:hover .tooltip,
+  .wrapper .github:hover .tooltip::before {
+    background: #ffffff;
+    color: #000000;
+
+  }
+  
+  .wrapper .instagram:hover,
+  .wrapper .instagram:hover .tooltip,
+  .wrapper .instagram:hover .tooltip::before {
+    background: white;
+    color: #E4405F;
+  }
+
+  .instagramlogo:hover, .githublogo:hover , .linkedinlogo:hover{
+    scale: 1.35;
+    transition: all 0.2s ease-in-out;
+  }
+  
+.slide-in-entrance{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* background: url("./assets/gradient-ocean-blue.jpg");    */
+  background: url("./assets/entrance.png");    
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: auto;
+    transform-origin: bottom;
+    z-index: 1;
+  }
+.slide-out-entrance{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* background: url("./assets/gradient-ocean-blue.jpg");     */
+    background: url("./assets/entrance.png");    
+
+    transform-origin: top;
+    /* background-size: 100vw 100vh; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #212121;
+    z-index: 1;
+
+    
+}
+.slide-in{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url("./assets/entrance.png");    
+  background-size: cover;
+  transform-origin: bottom;
+  z-index: 1;
+}
+.slide-out{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* background: url("./assets/gradient-ocean-blue.jpg");     */
+  transform-origin: top;
+  /* background-size: cover; */
+  background-color: #212121;
+  z-index: 1;
+
+  
+}
+.slide-left-in{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    /* background: url("./assets/aboutimage.jpg");
+         */
+    background-color: aliceblue;
+    transform-origin: left;
+}
+.slide-left-out{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: aliceblue;
+    background-size:100vh 100vw ;
+    transform-origin: left;
+    background-size: cover;
+    
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.slide-right-in{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-color: aliceblue;
+  transform-origin: right;
+}
+.slide-right-out{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: aliceblue;
+  background-size:100vh 100vw ;
+  transform-origin: right;
+  background-size: cover;
+  
+}
+
+
+.about-section {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  text-align: center;
+  background-color: #f5f5f5;
 }
 
-.App-link {
-  color: #61dafb;
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/aboutimage.jpg');
+  /* opacity: 0.8; */
+  background-size: cover;
+  color: #000000;
 }
+.background-image::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/aboutimage.jpg');
+  /* opacity: 0.9; */
+  background-size: cover;
+
+  filter: blur(8px);
+
+}
+.boxshadow{
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.content {
+  text-align: center;
+  z-index: 1;
+}
+
+.title {
+  font-size: 3rem;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #000000;
+  max-width: 600px;
+}
+
+
+.education{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+
+}
+
+.book {
+  position: relative;
+  border-radius: 10px;
+  width: 320px;
+  height: 400px;
+  margin-bottom: 50px;
+  background-color: whitesmoke;
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+  -webkit-transform: preserve-3d;
+  -ms-transform: preserve-3d;
+  transform: preserve-3d;
+  -webkit-perspective: 2000px;
+  perspective: 2000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #000;
+}
+
+.cover {
+  top: 0;
+  position: absolute;
+
+  background :linear-gradient(90deg, rgb(8, 0, 169) 0%, rgb(47, 47, 198) 35%, rgba(0,212,255,1) 100%);
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform-origin: 0;
+  -ms-transform-origin: 0;
+  transform-origin: 0;
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.book:hover .cover {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: rotatey(-80deg);
+  -ms-transform: rotatey(-80deg);
+  transform: rotatey(-80deg);
+}
+
